@@ -14,6 +14,9 @@ Toutes vos analyses resteront stockées en sécurité dans votre espace afin de 
 *Les explications sont **informatives, jamais un diagnostic** : elles décrivent ce qu'un écart
 *peut traduire*, au conditionnel, et renvoient au médecin.*
 
+<img width="996" height="598" alt="Bloo_screen" src="https://github.com/user-attachments/assets/6364b3a6-45e9-4742-adf0-977cd341d656" />
+
+
 ---
 
 # 🔒 MINI-COFFRE FORT EN LOCAL
@@ -70,14 +73,9 @@ npm install
 npm run dev          # http://localhost:3000
 ```
 
-| Commande | Rôle |
-|---|---|
-| `npm run dev` | serveur de développement |
-| `npm run build` | build de production |
-| `npm run typecheck` | vérification des types |
-| `npm run lint` | eslint |
-| `npm run check:catalog` | intégrité du catalogue de marqueurs |
-| `npm run check:crypto` | aller-retour de chiffrement du coffre |
+
+<img width="2128" height="1108" alt="Bloo_accueil" src="https://github.com/user-attachments/assets/199f08dd-92a8-4cae-a99d-f47dac3f2df3" />
+
 
 ---
 
