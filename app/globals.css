@@ -1,0 +1,70 @@
+@import "tailwindcss";
+
+@theme {
+  /* Palette Bloo — roses / rouges chaleureux */
+  --color-blush-50: #fff5f6;
+  --color-blush-100: #ffe6ea;
+  --color-blush-200: #ffccd5;
+  --color-blush-300: #ffa6b7;
+  --color-blush-400: #fb7793;
+  --color-blush-500: #ee4f74;
+  --color-blush-600: #d92f5c;
+  --color-blush-700: #b41f49;
+  --color-blush-800: #8e1a3c;
+  --color-blush-900: #6d1731;
+
+  --color-cream: #fffaf7;
+  --color-sand: #f7ece8;
+  --color-ink: #3a2229;
+  --color-ink-soft: #7a5c65;
+
+  /* Sémantique des statuts de marqueurs */
+  --color-ok: #2f8f6b;
+  --color-ok-bg: #e6f5ef;
+  --color-watch: #c07a12;
+  --color-watch-bg: #fdf1dc;
+  --color-alert: #c23b4b;
+  --color-alert-bg: #fde8ea;
+
+  --font-sans: "Nunito", ui-rounded, "Segoe UI", system-ui, sans-serif;
+
+  --radius-xl2: 1.5rem;
+}
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  background:
+    radial-gradient(1100px 520px at 82% -12%, var(--color-blush-100), transparent 62%),
+    radial-gradient(760px 420px at -8% 8%, var(--color-blush-50), transparent 58%),
+    var(--color-cream);
+  background-attachment: fixed;
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer components {
+  .bloo-card {
+    @apply rounded-3xl border border-blush-100 bg-white/85 p-6 shadow-[0_10px_30px_-18px_rgba(180,31,73,0.45)] backdrop-blur-sm;
+  }
+  .bloo-btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-blush-600 px-5 py-2.5 text-sm font-bold text-white
+           transition hover:bg-blush-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blush-600
+           disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .bloo-btn-soft {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-blush-200 bg-white px-5 py-2.5 text-sm font-bold
+           text-blush-700 transition hover:bg-blush-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blush-600
+           disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .bloo-input {
+    @apply w-full rounded-2xl border border-blush-200 bg-white px-4 py-2.5 text-sm text-ink outline-none
+           placeholder:text-ink-soft/60 focus:border-blush-400 focus:ring-4 focus:ring-blush-100;
+  }
+  .bloo-label {
+    @apply mb-1.5 block text-xs font-bold uppercase tracking-wide text-ink-soft;
+  }
+}

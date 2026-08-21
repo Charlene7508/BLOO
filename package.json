@@ -1,0 +1,37 @@
+{
+  "name": "bloo",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "check:catalog": "tsx scripts/check-catalog.mts",
+    "check:crypto": "tsx scripts/check-crypto.mts"
+  },
+  "dependencies": {
+    "@napi-rs/canvas": "^1.0.7",
+    "better-sqlite3": "^13.0.3",
+    "next": "15.5.23",
+    "pdfjs-dist": "^6.2.108",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "tesseract.js": "^7.0.0",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
+    "@types/better-sqlite3": "^9.6.0",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.5.23",
+    "tailwindcss": "^4",
+    "tsx": "^4.23.12",
+    "typescript": "^5"
+  }
+}
