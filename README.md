@@ -79,3 +79,7 @@ npm run dev          # http://localhost:3000
 | `npm run check:catalog` | intégrité du catalogue de marqueurs |
 | `npm run check:crypto` | aller-retour de chiffrement du coffre |
 
+---
+
+💻 *Projet codé à 100% en vibe coding avec Claude Code*
+
