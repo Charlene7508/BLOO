@@ -119,11 +119,8 @@ export default function ReportView({ report }: { report: Report }) {
       {report.questions.length > 0 && (
         <section className="bloo-card border-l-4 border-l-blush-400">
           <h3 className="text-base font-extrabold text-blush-800">
-            À emporter chez ton médecin
+            Pistes éventuelles à voir avec ton médecin
           </h3>
-          <p className="mt-2 text-sm text-ink-soft">
-            Quelques questions que ces résultats rendent utiles à poser.
-          </p>
           <ul className="mt-3 space-y-2">
             {report.questions.map((question) => (
               <li key={question} className="flex gap-2 text-sm text-ink">

@@ -9,15 +9,19 @@ export default function PasswordForm({
   submitLabel,
   withConfirmation = false,
   minLength = 1,
+  hint,
 }: {
   endpoint: string;
   submitLabel: string;
   withConfirmation?: boolean;
   minLength?: number;
+  /** Consigne affichée sous le champ, avant la frappe plutôt qu'après. */
+  hint?: string;
 }) {
   const router = useRouter();
   const [password, setPassword] = useState("");
   const [confirmation, setConfirmation] = useState("");
+  const [visible, setVisible] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [pending, setPending] = useState(false);
 
@@ -57,17 +61,35 @@ export default function PasswordForm({
         <label className="bloo-label" htmlFor="password">
           Mot de passe
         </label>
-        <input
-          id="password"
-          type="password"
-          className="bloo-input"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          minLength={minLength}
-          required
-          autoFocus
-          autoComplete={withConfirmation ? "new-password" : "current-password"}
-        />
+        <div className="relative">
+          <input
+            id="password"
+            type={visible ? "text" : "password"}
+            className="bloo-input pr-24"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            minLength={minLength}
+            required
+            autoFocus
+            autoComplete={withConfirmation ? "new-password" : "current-password"}
+            aria-describedby={hint ? "password-hint" : undefined}
+          />
+          <button
+            type="button"
+            onClick={() => setVisible((v) => !v)}
+            aria-pressed={visible}
+            className="absolute inset-y-0 right-2 my-1 rounded-full px-3 text-xs font-bold text-blush-700
+                       transition hover:bg-blush-50 focus-visible:outline-2 focus-visible:outline-offset-2
+                       focus-visible:outline-blush-600"
+          >
+            {visible ? "Masquer" : "Afficher"}
+          </button>
+        </div>
+        {hint && (
+          <p id="password-hint" className="mt-2 text-xs text-ink-soft">
+            {hint}
+          </p>
+        )}
       </div>
 
       {withConfirmation && (
@@ -77,7 +99,7 @@ export default function PasswordForm({
           </label>
           <input
             id="confirmation"
-            type="password"
+            type={visible ? "text" : "password"}
             className="bloo-input"
             value={confirmation}
             onChange={(e) => setConfirmation(e.target.value)}

@@ -37,6 +37,51 @@ npx tsx scripts/test-parsing.mts <fichier.pdf>   # marqueurs extraits, ligne par
 npx tsx scripts/check-report.mts <fichier.pdf>   # chaîne complète jusqu'au compte rendu
 ```
 
+## Si un marqueur ne ressort pas
+
+Bloo ne connaît que les marqueurs de son catalogue, et il ne va pas chercher les autres sur
+Internet — c'est délibéré. Voici quoi faire quand un marqueur manque à l'appel.
+
+**D'abord, regarde la fin du compte rendu.** Une ligne que Bloo n'a pas su nommer n'est jamais
+jetée en silence : dès que le laboratoire a imprimé une plage de référence, la mesure est
+conservée et affichée à part, avec sa valeur et sa position dans l'intervalle, mais sans
+explication. Si ton marqueur est là, il a bien été lu — il lui manque seulement sa fiche.
+
+**Ensuite, vois ce que le parseur a extrait :**
+
+```bash
+npx tsx scripts/test-parsing.mts /chemin/vers/compte-rendu.pdf
+```
+
+Garde le PDF dans un dossier temporaire : un vrai compte rendu ne rentre jamais dans le dépôt.
+
+Deux cas se présentent.
+
+*La ligne apparaît, sans marqueur associé.* Le libellé du laboratoire ne fait partie d'aucun
+alias connu. Ajoute-le dans `lib/markers/catalog.ts` : soit comme alias supplémentaire d'un
+marqueur existant, soit comme nouvelle entrée complète (libellé, alias, catégorie, unité,
+plages de repli, textes du glossaire). Les accents et la ponctuation sont normalisés
+automatiquement — inutile de décliner `V.G.M.` et `vgm`. Méfie-toi en revanche des abréviations
+trop génériques : un alias court peut détourner un autre marqueur.
+
+*La ligne n'apparaît pas du tout.* C'est le parsing qui bute, pas le catalogue : mise en page
+inhabituelle, colonne « Antériorités » prise pour la valeur du jour, séparateurs exotiques, ou
+compte rendu scanné dont l'OCR abîme le libellé. Les pièges déjà rencontrés et la marche à
+suivre sont détaillés dans [CLAUDE.md](CLAUDE.md).
+
+**Enfin, vérifie :**
+
+```bash
+npm run check:catalog                             # aucun alias n'en détourne un autre
+npx tsx scripts/test-parsing.mts <le même PDF>    # le marqueur sort avec sa valeur et sa norme
+```
+
+`check:catalog` est à lancer après **tout** ajout : il contrôle que chaque alias retrouve bien
+son propre marqueur.
+
+Si tu travailles avec Claude Code, les skills `ajouter-marqueur` et `diagnostiquer-parsing`
+(dans `.claude/skills/`) déroulent ces deux procédures pas à pas.
+
 ## Ce qu'il y a dedans
 
 - `lib/markers/catalog.ts` — ~130 marqueurs : libellés, alias de laboratoire, plages de repli,

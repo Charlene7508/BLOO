@@ -13,16 +13,16 @@ export default function Bienvenue() {
         <Bloo size="xl" />
         <h1 className="mt-4 text-3xl font-extrabold text-blush-800">Bonjour, moi c&apos;est Bloo !</h1>
         <p className="mt-2 text-ink-soft">
-          Je me charge d&apos;analyser et de conserver précieusement toutes tes analyses de sang !
+          Je décode tes analyses de sang et je les conserve précieusement.
         </p>
       </div>
 
       <div className="bloo-card">
         <h2 className="text-lg font-bold text-blush-800">Créer ton espace</h2>
         <p className="mt-2 mb-5 text-sm text-ink-soft">
-          Ceci est un mini coffre-fort qui contient des données sensibles qui te sont propres, il
-          se doit donc d&apos;être protégé efficacement ! Par conséquent, ton mot de passe doit
-          être robuste et il ne pourra être réinitialisé si tu le perds donc note-le en lieu sûr.{" "}
+          Ceci est un mini coffre-fort qui contient des données sensibles qui te sont propres, par
+          conséquent il se doit d&apos;être protégé efficacement. Ton mot de passe doit être robuste
+          et il ne pourra être réinitialisé si tu le perds donc note-le en lieu sûr.{" "}
           <strong className="text-blush-700">Si tu l&apos;oublies, tes analyses seront perdues.</strong>
         </p>
         <PasswordForm
@@ -30,11 +30,8 @@ export default function Bienvenue() {
           submitLabel="Créer mon espace"
           withConfirmation
           minLength={MIN_PASSWORD_LENGTH}
+          hint={`${MIN_PASSWORD_LENGTH} caractères minimum. Une phrase dont tu te souviens fait un excellent mot de passe.`}
         />
-        <p className="mt-4 text-xs text-ink-soft">
-          {MIN_PASSWORD_LENGTH} caractères minimum. Une phrase dont tu te souviens fait un excellent
-          mot de passe.
-        </p>
       </div>
 
       <p className="mt-6 text-center text-xs text-ink-soft">

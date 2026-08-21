@@ -80,11 +80,13 @@ export default async function Accueil() {
       )}
 
       <section className="bloo-card">
-        <h2 className="text-base font-extrabold text-blush-800">Tes données restent chez toi</h2>
+        <h2 className="text-base font-extrabold text-blush-800">
+          Tes informations ne sortent pas d&apos;ici
+        </h2>
         <p className="mt-2 text-sm text-ink-soft">
-          Les documents et les résultats sont chiffrés sur cette machine avec ton mot de passe
-          maître. Bloo lit les PDF en local et rédige ses explications hors ligne : rien n&apos;est
-          envoyé sur Internet.
+          Bloo lit les analyses et rédige ses explications hors ligne, il ne part en quête
+          d&apos;information sur Internet que si besoin et de façon isolée (jamais avec tes
+          données).
         </p>
       </section>
     </div>
